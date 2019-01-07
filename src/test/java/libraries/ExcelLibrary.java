@@ -17,9 +17,15 @@ public class ExcelLibrary implements Auto_Const
 			FileInputStream fis=new FileInputStream(EXCEL_PATH);
 			Workbook wb=WorkbookFactory.create(fis);
 			Sheet s=wb.getSheet(sheetName);
-			Row r=s.getRow(rowNum);
-			Cell c=r.getCell(colNum);
-			retval=c.getStringCellValue();
+			Row r=null;
+			Cell c=null;
+			
+			if(s!=null)
+			   r=s.getRow(rowNum);
+			
+			if(r!=null)
+			  c=r.getCell(colNum);
+			   retval=c.getStringCellValue();
 		}
 		catch(Exception e)
 		{
